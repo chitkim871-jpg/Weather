@@ -83,7 +83,7 @@ function App() {
             <span className="text-white drop-shadow-lg">
               {texts[language].title1}
             </span>{" "}
-            <span className="bg-gradient-to-r from-sky-400 via-blue-500 to-pink-500 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-sky-400 via-blue-500 to-pink-500 bg-clip-text text-transparent">
               {texts[language].title2}
             </span>
           </h1>
