@@ -39,21 +39,33 @@ function App() {
     },
   };
 
+  const [loading, setLoading] = useState(false);
+
   const searchWeather = async (city) => {
+    if (!city?.trim()) {
+      alert("Please enter a city name");
+      return;
+    }
+
+    setLoading(true);
+
     try {
-      const weatherData = await getWeather(city);
-      const forecastData = await getForecast(city);
-      const hourlyData = await getHourlyForecast(city);
+      const [weatherData, forecastData, hourlyData] = await Promise.all([
+        getWeather(city),
+        getForecast(city),
+        getHourlyForecast(city),
+      ]);
 
       setWeather(weatherData);
       setForecast(forecastData);
       setHourlyForecast(hourlyData);
     } catch (error) {
-      console.error(error);
-      alert("City not found");
+      console.error("Weather search error:", error);
+      alert("City not found or API error");
+    } finally {
+      setLoading(false);
     }
   };
-
   useEffect(() => {
     searchWeather("Phnom Penh");
   }, []);
@@ -94,8 +106,8 @@ function App() {
             <button
               onClick={() => setLanguage("en")}
               className={`px-3 sm:px-4 py-2 text-sm sm:text-base rounded-lg transition-all duration-200 ${language === "en"
-                  ? "bg-blue-500 text-white shadow-lg scale-105"
-                  : "bg-white/20 text-white hover:bg-white/30"
+                ? "bg-blue-500 text-white shadow-lg scale-105"
+                : "bg-white/20 text-white hover:bg-white/30"
                 }`}
             >
               English
@@ -104,8 +116,8 @@ function App() {
             <button
               onClick={() => setLanguage("kh")}
               className={`px-3 sm:px-4 py-2 text-sm sm:text-base rounded-lg transition-all duration-200 ${language === "kh"
-                  ? "bg-pink-500 text-white shadow-lg scale-105"
-                  : "bg-white/20 text-white hover:bg-white/30"
+                ? "bg-pink-500 text-white shadow-lg scale-105"
+                : "bg-white/20 text-white hover:bg-white/30"
                 }`}
             >
               ខ្មែរ
