@@ -6,30 +6,31 @@ function SearchBar({ onSearch }) {
 
   const cities = [
     "Phnom Penh",
-    "Banteay Meanchey",
+    "Poipet",          // Banteay Meanchey
     "Battambang",
+    "Banteay Meanchey",
     "Kampong Cham",
     "Kampong Chhnang",
-    "Kampong Speu",
+    "Chbar Mon",       // Kampong Speu
     "Kampong Thom",
     "Kampot",
-    "Kandal",
-    "Kep",
-    "Koh Kong",
+    "Ta Khmau",        // Kandal
+    "krong Kep",
+    "Koh Kong", // Koh Kong
     "Kratie",
-    "Mondulkiri",
-    "Oddar Meanchey",
+    "Sen Monorom",    // Mondulkiri
+    "Samraong",        // Oddar Meanchey
     "Pailin",
-    "Preah Sihanouk",
-    "Preah Vihear",
+    "Sihanoukville",   // Preah Sihanouk
+    "Tbeng Meanchey",  // Preah Vihear
     "Prey Veng",
     "Pursat",
-    "Ratanakiri",
+    "Banlung",         // Ratanakiri
     "Siem Reap",
     "Stung Treng",
     "Svay Rieng",
     "Takeo",
-    "Tbong Khmum",
+    "Suong",           // Tbong Khmum
   ];
 
   const handleChange = (e) => {
@@ -82,7 +83,7 @@ function SearchBar({ onSearch }) {
 
       {/* Suggestions */}
       {suggestions.length > 0 && (
-        <ul className="absolute z-50 w-full mt-2 bg-black/80 backdrop-blur-lg border border-white/20 rounded-xl overflow-hidden">
+        <ul className="absolute z-50 w-full mt-2 bg-black/40 backdrop-blur-lg border border-white/20 rounded-xl overflow-hidden">
           {suggestions.slice(0, 5).map((item, index) => (
             <li
               key={index}

@@ -2,7 +2,7 @@ function WeatherCard({ weather }) {
   if (!weather) return null;
 
   return (
-    <div className="bg-white/20 backdrop-blur-xl shadow-xl rounded-3xl p-6 text-center">
+    <div className=" backdrop-blur-xl border-2 border-blue-600    shadow-xl rounded-3xl p-6 text-center">
 
       {/* City */}
       <h2 className="text-3xl font-bold text-white">
