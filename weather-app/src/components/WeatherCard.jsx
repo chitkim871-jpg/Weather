@@ -1,64 +1,77 @@
+import weatherImages from "../data/weatherImages";
+
 function WeatherCard({ weather }) {
   if (!weather) return null;
 
+  const getWeatherImage = (condition) => {
+    return weatherImages[condition] || weatherImages.Clear;
+  };
+
   return (
-    <div className=" backdrop-blur-xl border-2 border-blue-600    shadow-xl rounded-3xl p-6 text-center">
+    <div className="relative overflow-hidden rounded-3xl border-2 border-blue-500 ">
 
-      {/* City */}
-      <h2 className="text-3xl font-bold text-white">
-        {weather.name}
-      </h2>
-
-      {/* Weather Icon */}
+      {/* Background Image */}
       <img
-        src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@4x.png`}
-        alt={weather.weather[0].description}
-        className="mx-auto w-28 h-28"
+        src={getWeatherImage(weather.weather[0].main)}
+        alt={weather.weather[0].main}
+        className="absolute inset-0 w-full h-full object-cover opacity-50"
       />
 
-      {/* Temperature */}
-      <h1 className="text-6xl font-bold text-white">
-        {Math.round(weather.main.temp)}°C
-      </h1>
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/30" />
 
-      {/* Description */}
-      <p className="text-white/80 capitalize text-lg mt-2">
-        {weather.weather[0].description}
-      </p>
+      {/* Content */}
+      <div className="relative z-10 p-6 text-center text-white">
 
-      {/* Weather Info */}
-      <div className="grid grid-cols-2 gap-4 mt-6">
+        <h2 className="text-3xl font-bold">
+          {weather.name}
+        </h2>
 
-        <div className="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/20">
-          <p className="text-white/70 text-sm">Humidity</p>
-          <h3 className="text-xl font-bold text-white">
-            {weather.main.humidity}%
-          </h3>
-        </div>
+        <img
+          src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@4x.png`}
+          alt={weather.weather[0].description}
+          className="mx-auto w-32 h-32"
+        />
 
-        <div className="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/20">
-          <p className="text-white/70 text-sm">Wind</p>
-          <h3 className="text-xl font-bold text-white">
-            {weather.wind.speed} km/h
-          </h3>
-        </div>
+        <h1 className="text-6xl font-bold">
+          {Math.round(weather.main.temp)}°C
+        </h1>
 
-        <div className="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/20">
-          <p className="text-white/70 text-sm">Feels Like</p>
-          <h3 className="text-xl font-bold text-white">
-            {Math.round(weather.main.feels_like)}°C
-          </h3>
-        </div>
+        <p className="text-lg capitalize text-white/90 mt-2">
+          {weather.weather[0].description}
+        </p>
 
-        <div className="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/20">
-          <p className="text-white/70 text-sm">Pressure</p>
-          <h3 className="text-xl font-bold text-white">
-            {weather.main.pressure} hPa
-          </h3>
+        <div className="grid grid-cols-2 gap-4 mt-8">
+          <div className="bg-blue-600 rounded-2xl p-4 border border-blue-500">
+            <p className="text-white/70 text-sm">💧 Humidity</p>
+            <h3 className="text-xl font-bold">
+              {weather.main.humidity}%
+            </h3>
+          </div>
+
+          <div className="bg-blue-600  rounded-2xl p-4 border border-blue-500">
+            <p className="text-white/70 text-sm">💨 Wind</p>
+            <h3 className="text-xl font-bold">
+              {weather.wind.speed} km/h
+            </h3>
+          </div>
+
+          <div className="bg-blue-600 rounded-2xl p-4 border border-blue-500">
+            <p className="text-white/70 text-sm">🌡️ Feels Like</p>
+            <h3 className="text-xl font-bold">
+              {Math.round(weather.main.feels_like)}°C
+            </h3>
+          </div>
+
+          <div className="bg-blue-600 rounded-2xl p-4 border border-blue-500">
+            <p className="text-white/70 text-sm">📊 Pressure</p>
+            <h3 className="text-xl font-bold">
+              {weather.main.pressure} hPa
+            </h3>
+          </div>
         </div>
 
       </div>
-
     </div>
   );
 }

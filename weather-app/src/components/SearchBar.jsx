@@ -90,7 +90,7 @@ function SearchBar({ onSearch }) {
               onClick={() => handleSelect(item)}
               className="px-4 py-3 text-white cursor-pointer hover:bg-white/10 transition-colors"
             >
-              📍 {item}
+              {item}
             </li>
           ))}
         </ul>
