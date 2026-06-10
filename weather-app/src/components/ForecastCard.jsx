@@ -27,7 +27,7 @@ function ForecastCard({ forecast }) {
         return (
           <div
             key={index}
-            className="relative overflow-hidden border border-white/30 rounded-2xl p-4 text-center text-white shadow-2xs"
+            className="relative overflow-hidden border-2 border-blue-600 rounded-2xl p-4 text-center text-white shadow-2xs"
           >
             {/* Background Image */}
             <img

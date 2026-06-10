@@ -18,7 +18,7 @@ function WeatherCard({ weather }) {
       />
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/30" />
+      <div className="absolute inset-0 " />
 
       {/* Content */}
       <div className="relative z-10 p-6 text-center text-white">
@@ -43,28 +43,28 @@ function WeatherCard({ weather }) {
 
         <div className="grid grid-cols-2 gap-4 mt-8">
           <div className="bg-blue-600 rounded-2xl p-4 border border-blue-500">
-            <p className="text-white/70 text-sm">💧 Humidity</p>
+            <p className="text-white/70 text-sm">Humidity</p>
             <h3 className="text-xl font-bold">
               {weather.main.humidity}%
             </h3>
           </div>
 
           <div className="bg-blue-600  rounded-2xl p-4 border border-blue-500">
-            <p className="text-white/70 text-sm">💨 Wind</p>
+            <p className="text-white/70 text-sm">Wind</p>
             <h3 className="text-xl font-bold">
               {weather.wind.speed} km/h
             </h3>
           </div>
 
           <div className="bg-blue-600 rounded-2xl p-4 border border-blue-500">
-            <p className="text-white/70 text-sm">🌡️ Feels Like</p>
+            <p className="text-white/70 text-sm">Feels Like</p>
             <h3 className="text-xl font-bold">
               {Math.round(weather.main.feels_like)}°C
             </h3>
           </div>
 
           <div className="bg-blue-600 rounded-2xl p-4 border border-blue-500">
-            <p className="text-white/70 text-sm">📊 Pressure</p>
+            <p className="text-white/70 text-sm">Pressure</p>
             <h3 className="text-xl font-bold">
               {weather.main.pressure} hPa
             </h3>

@@ -6,7 +6,7 @@ function HourlyForecast({ forecast }) {
   };
 
   return (
-    <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-5 border border-white/20 shadow-xl">
+    <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-5 border-2 border-blue-600 shadow-xl">
       <div className="flex gap-4 overflow-x-auto pb-2">
         {forecast.map((item, index) => {
           const temp = Math.round(item.main.temp);
@@ -15,7 +15,7 @@ function HourlyForecast({ forecast }) {
           return (
             <div
               key={index}
-              className="relative min-w-35 shrink-0 overflow-hidden rounded-2xl border border-white/20 shadow-lg"
+              className="relative min-w-35 shrink-0 overflow-hidden rounded-2xl border border-pink-600 shadow-lg"
             >
               {/* Background Image */}
               <img
